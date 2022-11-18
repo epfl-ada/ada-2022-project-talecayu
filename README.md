@@ -30,7 +30,7 @@ xxx explain
 
 **Step 3: Graph generation based on the similarity metric and graph visualisation**
 
-**Step 4: Analysis of the similarity graph **
+**Step 4: Analysis of the similarity graph**
 
 **Step 5: User recommandation algorithm** 
 
