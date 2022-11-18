@@ -47,6 +47,7 @@ Observe the corresponding scrapping section in the notebook for libraries and co
   <li>Plot topic extraction. Using Doc2Vec, LDA or BERTopic we compute a vector representing the topics present in the plot (the Doc2Vec is trained directly to give a vector, for the other two we build it from the frequency/probability of each topic). To compare plots between movies we compute the cosine similarity of their representing vectors.
 </li>
 </ol>
+
 **Step 3: Graph generation based on the similarity metric and graph visualisation**
 <ol>
   <li>Once the similarity function is built, and we have a global metric, we can test if it works well on a subset of movies. We compute the similarity in all possible pairs of movies in the subset and store the result to build a small version of the graph. We can also tune the weights of each feature and see the changes it implies in the graph.
@@ -58,6 +59,7 @@ Observe the corresponding scrapping section in the notebook for libraries and co
   <li>We use a graph visualization tool like Gephi specialized in representing graphs, and analyze it.
 </li>
 </ol>
+
 **Step 4: Analysis of the similarity graph**
 Since we expect the movies to split into clusters, we will run some graph clustering algorithms (like “Edge Betweenness clustering” or “Biconnected components clustering”) and see if the generated clusters are meaningful.
 
