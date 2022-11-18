@@ -3,19 +3,19 @@
 
 ## Abstract
 [//]: # "Abstract: A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?"
-The idea is to represent the set of movies as a graph, where every movie is a vertex that is connected to all others through weighted edges. Similar movies (like sequels) will have high-valued edges interconnecting them. It is expected that such a classification of movies divides them into clusters. This graph could then be used to suggest movies: "If you liked this movie, you might like \[top 5 connected vertices with highest edges\]". Building such a graph will allow to explore how the movies are interconnected to each other and what is the best predictor to find similar movies. The movie recommandation system that we will create will give us insight on how such algorithm work, will make us define what makes two movies similar and will emphasise the bias of this choice on the recommandation.
+The idea is to represent the set of movies as a graph, where every movie is a vertex that is connected to all others through weighted edges. Similar movies (like sequels) will have high-valued edges interconnecting them. It is expected that such a classification of movies divides them into clusters. This graph could then be used to suggest movies: "If you liked this movie, you might like \[top 5 connected vertices with highest edges\]". Building such a graph will allow to explore how the movies are interconnected to each other and what is the best predictor to find similar movies. The movie recommendation system that we will create will give us insight on how such algorithm work, will make us define what makes two movies similar and will emphasise the bias of this choice on the recommendation.
 
 ## Research Questions
 [//]: # "Research Questions: A list of research questions you would like to address during the project."
 * If we create a graph with all the movies, is it possible to identify large clusters of movies interconnected with each other?
 * (Assuming they split into clusters) what are the characteristics of the biggest cluster?
 * With our approach, are we able to spot movies that are influenced by other movies? On the other hand are we able to spot movies that are similar to no others?
-* How does a content-based recommandation algorithm (like the one we are building) compares to a user-based one ("users who have liked this movie have also liked [...]") ? What are the biases with one or the other method?
+* How does a content-based recommendation algorithm (like the one we are building) compares to a user-based one ("users who have liked this movie have also liked [...]") ? What are the biases with one or the other method?
 
 
 ## Data size discussion
 [//]: # "Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible."
-Connecting all movies together (with an adjacency matrix) might be too expensive in storage : with 42306 movies we would have 42'306×42'305÷2 = 894'877'665 edges. If each edge is a float (4 bytes), this would be equivalent to about 3.6 GB. So instead we will build the graph as an adjacency list, and store only the closest 100 movies. We keep more than the number of movies we'll recommand to be able to apply filters to the output (by language for example) without having to recompute the whole graph.
+Connecting all movies together (with an adjacency matrix) might be too expensive in storage : with 42306 movies we would have 42'306×42'305÷2 = 894'877'665 edges. If each edge is a float (4 bytes), this would be equivalent to about 3.6 GB. So instead we will build the graph as an adjacency list, and store only the closest 100 movies. We keep more than the number of movies we'll recommend to be able to apply filters to the output (by language for example) without having to recompute the whole graph.
 
 ### Additional dataset
 In order to increase the number of useful attributes to calculate the similarity between films, a database made from scraping on wikidata is built. By starting with the ‘Freebase ID’, one collects additional information such as the movie director, the color of the movie, the location of the movie, the composer, etc. 
@@ -65,7 +65,7 @@ Observe the corresponding scrapping section in the notebook for libraries and co
 
 Since we expect the movies to split into clusters, we will run some graph clustering algorithms (like “Edge Betweenness clustering” or “Biconnected components clustering”) and see if the generated clusters are meaningful.
 
-**Step 5: User recommandation algorithm** 
+**Step 5: User recommendation algorithm** 
 
 The user gives a movie, and using the graph adjacency list directly we suggest the top 5 or 10 most similar movies. We will also add the option to use filters, to remove movies with certain languages or from certain release date/countries.
 
