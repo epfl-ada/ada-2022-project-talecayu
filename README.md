@@ -49,6 +49,7 @@ Observe the corresponding scrapping section in the notebook for libraries and co
 </ol>
 
 **Step 3: Graph generation based on the similarity metric and graph visualisation**
+
 <ol>
   <li>Once the similarity function is built, and we have a global metric, we can test if it works well on a subset of movies. We compute the similarity in all possible pairs of movies in the subset and store the result to build a small version of the graph. We can also tune the weights of each feature and see the changes it implies in the graph.
 </li>
@@ -61,12 +62,15 @@ Observe the corresponding scrapping section in the notebook for libraries and co
 </ol>
 
 **Step 4: Analysis of the similarity graph**
+
 Since we expect the movies to split into clusters, we will run some graph clustering algorithms (like “Edge Betweenness clustering” or “Biconnected components clustering”) and see if the generated clusters are meaningful.
 
 **Step 5: User recommandation algorithm** 
+
 The user gives a movie, and using the graph adjacency list directly we suggest the top 5 or 10 most similar movies. We will also add the option to use filters, to remove movies with certain languages or from certain release date/countries.
 
 **Step 6: Github site building and Datastory redaction**
+
 Finally we build a site summarizing the datastory and the different visualizations we have built, including the user recommendation algorithm.
 
 Further details on the proposed data pipelines can be found in the notebook.
