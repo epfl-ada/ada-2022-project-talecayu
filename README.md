@@ -18,7 +18,7 @@ The idea is to represent the set of movies as a graph, where every movie is a ve
 Connecting all movies together (with an adjacency matrix) might be too expensive in storage : with 42306 movies we would have 42'306×42'305÷2 = 894'877'665 edges. If each edge is a float (4 bytes), this would be equivalent to about 3.6 GB. So instead we will build the graph as an adjacency list, and store only the closest 100 movies. We keep more than the number of movies we'll recommend to be able to apply filters to the output (by language for example) without having to recompute the whole graph.
 
 ### Additional dataset
-In order to increase the number of useful attributes to calculate the similarity between films, a database made from scraping on wikidata is built. By starting with the ‘Freebase ID’, one collects additional information such as the movie director, the color of the movie, the location of the movie, the composer, etc. 
+In order to increase the number of useful attributes to calculate the similarity between films, a database made from scraping on wikidata is built. By starting with the Freebase ID, one collects additional information such as the movie director, the color of the movie, the location of the movie, the composer, etc. 
 The director and color attributes being the least sparse, we decided to add them to the cleaned movie metadata. 
 
 Observe the corresponding scrapping section in the notebook for libraries and code specifications. 
@@ -80,7 +80,7 @@ Further details on the proposed data pipelines can be found in the notebook.
 Deadlines correspondings to each step of the method.
 * 18/11/2022: step 1
 * 09/12/2022: steps 2 and 3
-* 16/12/2022: setps 4 and 5
+* 16/12/2022: steps 4 and 5
 * 23/12/2022: step 6
 
 
