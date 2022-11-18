@@ -3,27 +3,23 @@
 
 ## Abstarct
 [//]: # "Abstract: A 150 word description of the project idea and goals. What’s the motivation behind your project? What story would you like to tell, and why?"
-The idea is to represent the set of movies as a graph, where every movie is a vertex that is connected to all others through weighted edges. Similar movies (like sequels) will have high-valued edges interconnecting them. It is expected that such a classification of movies divides them into clusters. This graph could then be used to suggest movies: "If you liked this movie, you might like \[top 5 connected vertices with highest edges\]". 
-
-So, the motivation would be to create a movie recommender system, and for that we would like to present a way to find similar movies.
-
-
+The idea is to represent the set of movies as a graph, where every movie is a vertex that is connected to all others through weighted edges. Similar movies (like sequels) will have high-valued edges interconnecting them. It is expected that such a classification of movies divides them into clusters. This graph could then be used to suggest movies: "If you liked this movie, you might like \[top 5 connected vertices with highest edges\]". Building such a graph will allow to explore how the movies are interconnected to each other and what is the best predictor to find similar movies. The motivation is also to create a movie recommender system, and gaining insight in how such algorithm work.
 
 
 ## Research Questions
 [//]: # "Research Questions: A list of research questions you would like to address during the project."
 * If we create a graph with all the movies, is it possible to identify large clusters of movies interconnected with each other?
-* With our approach, are we able to spot movies that are copies of some other movies? On the other hand are we able to spot movies that are similar to nothing?
+* (Assuming they slit into clusters) what are the characteristics of the biggest cluster?
+* With our approach, are we able to spot movies that are copies of some other movies? On the other hand are we able to spot movies that are similar to no others?
+* How does a data-based recommandation algorithm (like the one we are building) compares to a user-based one ("users who have liked this movie have also liked [...]") ? What are the biases with one or the other method?
 
 
 ## Data discussion
 [//]: # "Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible."
-We do not have an additional datasets because we can compute the similarities between movies with the datset we already have at our disposal.
+Connecting all movies together (with an adjacency matrix) might be too expensive in storage : with 42306 movies we would have 42'306×42'305÷2 = 894'877'665 edges. If each edge is a float (4 bytes), this would be equivalent to about 3.6 GB. So instead we will build the graph as an adjacency list, and store only the closest 100 movies. We keep more than the number of movies we'll recommand to be able to apply filters to the output (by language for example) without having to recompute the whole graph.
 
-There could be additional features that help us compute better the similarity, such as the director of the movie or the music or other characteristics.
-
-Connecting all movies together might be too expensive computationally and might take to much space : with 42306 movies we would have 42'306×42'305÷2 = 894'877'665 edges. If each edge is a float (4 bytes), this would be equivalent to about 3.6 GB. To avoid having to store this much data we have considered a cutoff method, for example only keep edges above a certain value, or for each movie keep a limited number of bound movies.
-
+### Additional dataset
+Additional datasets are not required, as we can already find a similarity function without them. However, we can find features that might give us features that help us to better predict movies similarities, like the director of a movie or knowing if the movie is in color or black and white. We can get this data by scraping through the wikipedia pages. 
 
 ## Methods
 
