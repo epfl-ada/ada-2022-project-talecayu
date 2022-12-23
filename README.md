@@ -15,7 +15,7 @@ In this project we try to build a graph of movies. The idea is to represent each
 
 ## Data size discussion
 [//]: # "Proposed additional datasets (if any): List the additional dataset(s) you want to use (if any), and some ideas on how you expect to get, manage, process, and enrich it/them. Show us that you’ve read the docs and some examples, and that you have a clear idea on what to expect. Discuss data size and format if relevant. It is your responsibility to check that what you propose is feasible."
-To be able to tune the weights, we store the similarity matrix for each feature. While storage expensive (about 2.8 GB per feature), it gives us more flexibility to modify the graph. To store these matrices, we convert the similarity from the range 0-1 to the range 0-65'535 and store them in the format uint16. This is equivalent to working with fixed point numbers, where the LSB is 1/65'535.
+To be able to tune the weights, we store the similarity matrix for each feature. While the storage is quite expensive (about 2.8 GB per feature), it gives us more flexibility to modify the graph. To store these matrices, we convert the similarity from the range 0-1 to the range 0-65'535 and store them in the format uint16. This is equivalent to working with fixed point numbers, where the LSB is 1/65'535.
 
 
 ### Additional dataset
@@ -36,7 +36,7 @@ The code for the scraping is in a separated notebook, as we only need to run it 
 <ol>
   <li>Definition of the total similarity function between two movies. The total similarity is a weighted sum of the individual similarities based on each feature of the movie 
 </li>
-  <li>Computation of the similarity between movies for each feature. In all the following steps, when a movie attribute is not provided (NaN value), the resulting similarity with other movies is 0. For some features we propose several methods for similarity computing, the best method will be chosen in Milestone3 after comparing performances:
+  <li>Computation of the similarity between movies for each feature. In all the following steps, when a movie attribute is not provided (NaN value), the resulting similarity with other movies is 0.
   <ul>
   <li>Word Categorical features: Movie genres, Movie Languages, Movie Countries, Actors, Characters. We use the jaccard similarity</li>
   <li>Binary features: Color (Movie in Colors - Movie in black and white), Runtime (long film - short film) and Director. We compute a binary similarity described in the notebook methods.</li>
