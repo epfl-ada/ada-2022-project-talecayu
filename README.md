@@ -68,7 +68,7 @@ We split our movies into clusters using the Louvain method. We then analyze what
 
 **Step 5: Github site-building and Datastory redaction**
 
-Finally we build a site summarizing the datastory and the different visualizations we have built. You can consult it [https://leondelachaux.github.io/ada_website_cayman/](https://leondelachaux.github.io/ada_website_cayman/).
+Finally we build a site summarizing the datastory and the different visualizations we have built. You can consult it here: [https://leondelachaux.github.io/ada_website_cayman/](https://leondelachaux.github.io/ada_website_cayman/).
 
 Further details on the proposed data pipelines can be found in the notebook.
 
